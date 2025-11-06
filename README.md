@@ -54,24 +54,10 @@ which evaluates to:
   ['price 19.5 :currency 'EUR]]]
 ```
 
-## Install
-
-```sh
-npm install @xieyuheng/x-sexp.js
-```
-
 ## Examples
 
 - [src/examples/lambda.test.ts](src/examples/lambda.test.ts):
 - [src/examples/tau.test.ts](src/examples/tau.test.ts):
-
-## Development
-
-```sh
-npm install
-npm run build
-npm run test
-```
 
 ## References
 
