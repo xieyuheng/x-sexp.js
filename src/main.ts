@@ -1,14 +1,33 @@
 #!/usr/bin/env -S node --stack-size=65536
 
-import { Commander } from "@xieyuheng/commander.js"
-import { FormatCommand } from "./commands/FormatCommand.ts"
+import { CommandRouter } from "@xieyuheng/command-router.js"
+import fs from "node:fs"
+import { errorReport } from "./helpers/error/errorReport.ts"
+import { getPackageJson } from "./helpers/node/getPackageJson.ts"
+import * as S from "./index.ts"
 
-async function main() {
-  const commander = new Commander()
+const { version } = getPackageJson()
 
-  commander.use(FormatCommand)
+const router = new CommandRouter("x-sexp.js", version)
 
-  await commander.run(process.argv)
+const routes = {
+  format: "file -- format a file",
 }
 
-main()
+router.bind(routes, {
+  format: async ([file]) => {
+    const text = fs.readFileSync(file, "utf8")
+    const sexps = S.parseSexps(text)
+    for (const sexp of sexps) {
+      console.log(S.prettySexp(60, sexp))
+      console.log()
+    }
+  },
+})
+
+try {
+  await router.run(process.argv.slice(2))
+} catch (error) {
+  console.log(errorReport(error))
+  process.exit(1)
+}
