@@ -1,5 +1,5 @@
-import * as pp from "../../helpers/ppml/index.ts"
 import { recordIsEmpty } from "../../helpers/record/recordIsEmpty.ts"
+import * as pp from "../../ppml/index.ts"
 import { formatSexp } from "../format/index.ts"
 import { isAtom, type Sexp } from "../sexp/index.ts"
 import { defaultConfig } from "./defaultConfig.ts"
