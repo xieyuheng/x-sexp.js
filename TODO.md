@@ -1,5 +1,3 @@
-`prettySexpByFormat`
-
 # format
 
 [bug] the position of attributes relative to elements, is lost
