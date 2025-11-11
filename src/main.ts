@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node --stack-size=65536
 
-import { CommandRouter } from "@xieyuheng/command-router.js"
+import * as Cmd from "@xieyuheng/command.js"
 import fs from "node:fs"
 import { errorReport } from "./helpers/error/errorReport.ts"
 import { getPackageJson } from "./helpers/node/getPackageJson.ts"
@@ -8,13 +8,11 @@ import * as S from "./index.ts"
 
 const { version } = getPackageJson()
 
-const router = new CommandRouter("x-sexp.js", version)
+const router = Cmd.createRouter("x-sexp.js", version)
 
-const routes = {
-  format: "file -- format a file",
-}
+router.defineRoutes(["format file -- format a file"])
 
-router.bind(routes, {
+router.defineHandlers({
   format: async ([file]) => {
     const text = fs.readFileSync(file, "utf8")
     const sexps = S.parseSexps(text)
