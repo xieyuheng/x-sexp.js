@@ -1,7 +1,7 @@
 {
-  "name": "@xieyuheng/sexp.js",
-  "version": "0.6.0",
-  "repository": "github:xieyuheng/sexp.js",
+  "name": "@xieyuheng/x-sexp.js",
+  "version": "0.5.7",
+  "repository": "github:xieyuheng/x-sexp.js",
   "license": "GPL-3.0-or-later",
   "type": "module",
   "main": "./lib/index.js",
@@ -10,7 +10,7 @@
     "lib"
   ],
   "bin": {
-    "sexp.js": "lib/main.js"
+    "x-sexp.js": "lib/main.js"
   },
   "scripts": {
     "build": "tsc",
@@ -19,10 +19,10 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@xieyuheng/command.js": "^0.2.3"
+    "@xieyuheng/command.js": "^0.2.2"
   },
   "devDependencies": {
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.0",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5.9.3"
